@@ -18,7 +18,7 @@ d.eat('Potato \n\n')
 
 
 class Parrot(Pet):
-    def __init__(self, name='Kesha'):
+    def __init__(self, name):
         print('Hi! I’m your new parrot!')
         self.name = name
 
