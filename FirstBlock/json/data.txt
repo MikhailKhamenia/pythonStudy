@@ -1,19 +1,28 @@
 {
-    "people": [
+    "play_list": [
         {
-            "name": "Scott",
-            "website": "pythonist.ru",
-            "from": "Nebraska"
+            "name": "Track1",
+            "website": [
+                "pythonist.ru",
+                "fdsfds.f",
+                "hfjkfsdfssds.fd"
+            ],
+            "from": 21
         },
         {
-            "name": "Larry",
-            "website": "pythonist.ru",
-            "from": "Michigan"
+            "name": "Track2",
+            "website": [
+                "pythonist.ru"
+            ],
+            "from": 100
         },
         {
-            "name": "Tim",
-            "website": "pythonist.ru",
-            "from": "Alabama"
+            "name": "Track3",
+            "website": [
+                "pythonist.ru",
+                "djdhcccjskdh.ru"
+            ],
+            "from": 50
         }
     ]
 }
