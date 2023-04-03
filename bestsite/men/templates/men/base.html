@@ -1,4 +1,5 @@
 {% load static %}
+{% load men_tags %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,32 +12,23 @@
 <body>
 <table class="table-page" border=0 cellpadding="0" cellspacing="0">
 <tr><td valign=top>
-{% block mainmenu %}
-		<div class="header">
-			<ul id="mainmenu" class="mainmenu">
-			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
-{% for m in menu %}
-	{% if not forloop.last %}
-			<li><a href="{% url m.url_name %}">{{m.title}}</a></li>
-	{% else %}
-			<li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
-	{% endif %}
-{% endfor %}
-			</ul>
-			<div class="clear"></div>
-		</div>
-{% endblock mainmenu %}
+{% show_main_menu %}
 
 
 <table class="table-content" border=0 cellpadding="0" cellspacing="0">
 <tr>
 <!-- Sidebar слева -->
 	<td valign="top" class="left-chapters">
+
 	<ul id="leftchapters">
+{% if cat_selected == 0 %}
 		<li class="selected">Все категории</li>
-		<li><a href="#">Актеры</a></li>
-		<li><a href="#">Ученые</a></li>
-		<li><a href="#">Спортсмены</a></li>
+{% else %}
+		<li><a href="{% url 'home' %}">Все категории</a></li>
+{% endif %}
+
+{% show_categories 'name' cat_selected %}
+
 		<li class="share">
 		<p>Наш канал</p>
 		<a class="share-yt" href="https://www.youtube.com/channel/UClJzWfGWuGJL2t-3dYKcHTA/playlists" target="_blank" rel="nofollow"></a>
