@@ -11,7 +11,7 @@ class Men(models.Model):
         time_create=models.DateTimeField(auto_now_add=True, verbose_name='Время создания')
         time_update=models.DateTimeField(auto_now=True, verbose_name='Вреья обновления')
         is_published=models.BooleanField(verbose_name='Публикация', default=True)
-        cat=models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='Категория',null=True)
+        cat=models.ForeignKey('Category', on_delete=models.CASCADE, verbose_name='Категория',null=True, related_name='get_posts')
 
 
         def __str__(self):
