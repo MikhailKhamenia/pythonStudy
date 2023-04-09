@@ -11,7 +11,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .forms import *
 from .models import *
+from .serializers import *
 from .utils import *
+
+from rest_framework import generics
+
 
 class MenHome(DataMixin, ListView):
     model = Men
@@ -179,3 +183,8 @@ class LoginUser(DataMixin, LoginView):
 def logout_user(request):
     logout(request)
     return redirect("login")
+
+
+class MenAPIView(generics.ListAPIView):
+    queryset=Men.objects.all()
+    serializer_class = MenSerializer
