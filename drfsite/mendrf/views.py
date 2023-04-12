@@ -2,7 +2,7 @@ from django.forms import model_to_dict
 from django.shortcuts import render
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -35,7 +35,7 @@ class MenAPIList(generics.ListCreateAPIView):
 class MenAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Men.objects.all()
     serializer_class = MenSerializer
-    permission_classes = (IsOwnerOrReadOnly, )
+    permission_classes = (IsAuthenticated, )
 
 class MenApiDestroy(generics.RetrieveDestroyAPIView):
     queryset = Men.objects.all()
