@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import *
+from .permission import IsAdminOrReadOnly, IsOwnerOrReadOnly
 from .serializers import *
 
 #class MenViewSet(viewsets.ModelViewSet):
@@ -34,12 +35,12 @@ class MenAPIList(generics.ListCreateAPIView):
 class MenAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Men.objects.all()
     serializer_class = MenSerializer
-
+    permission_classes = (IsOwnerOrReadOnly, )
 
 class MenApiDestroy(generics.RetrieveDestroyAPIView):
     queryset = Men.objects.all()
     serializer_class = MenSerializer
-    permission_classes = (IsAdminUser, )
+    permission_classes = (IsAdminOrReadOnly, )
 
 
 #class MenAPIView(APIView):
