@@ -12,9 +12,11 @@ from .models import *
 #        self.content = content
 
 class MenSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Men
-        fields = ('title','content', 'cat')
+        fields = '__all__'
 #    title = serializers.CharField(max_length=255)
 #    content = serializers.CharField()
 #    time_create = serializers.DateTimeField(read_only=True)
