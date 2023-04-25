@@ -6,16 +6,14 @@ from .forms import*
 def index(request):
     tasks = Task.objects.all()
 
-    form = TaskForm()
 
-    if request.method == "POST":
-        form = TaskForm(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('/')
+    form = TaskForm(request.POST)
 
-    context = {'tasks' : tasks, 'form' : form}
-    return render(request, 'todo/list.html', context)
+    if form.is_valid():
+        instance = form.save()
+        instance.save()
+
+    return render(request, 'todo/list.html', {'tasks' : tasks, 'form' : form})
 
 def updateTask(request, pk):
     task = Task.objects.get(id=pk)
